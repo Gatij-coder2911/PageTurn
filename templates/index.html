@@ -1,0 +1,288 @@
+{% load static %}
+{% comment %} {% static ""images" as ImgUrl %} {% endcomment %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% comment %} <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> {% endcomment %}
+    <title>Page Turn</title>
+</head>
+
+<body>
+    <div class="background">
+        <h1 class="text-red-700 text-2xl font-bold text-center">Unlocking Affordable Literature</h1>
+        <ul class="flex space-x-11 justify-end mr-64 mt-7">
+            <li class="font-bold"><a href="">Home</a></li>
+            <li class="font-bold"><a href="">Why Use</a></li>
+            <li class="font-bold"><a href="">Mostly Bought</a></li>
+            <li class="font-bold"><a href="">Benefits</a></li>
+            <li class="font-bold"><a href="">Helpline No.</a></li>
+            <li class="font-bold pl-16"><a href="">Login</a></li>
+            <li class="font-bold"><a href="">Register</a></li>
+            <a href="" class="btn btn-danger">+Sell Books</a>
+        </ul>
+
+        {% comment %} {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endcomment %}
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="dropdown">
+            <button class="dropbtn">Select Language</button>
+            <div class="dropdown-content">
+                <a href="#">Melayu</a>
+                <a href="#">Bosanki</a>
+                <a href="#">Bengali</a>
+                <a href="#">Dansk</a>
+                <a href="#">Eesti</a>
+                <a href="#">English(Australia)</a>
+                <a href="#">English(India)</a>
+                <a href="#">English(United Kingdom)</a>
+                <a href="#">Francais</a>
+                <a href="#">Galego</a>
+                <a href="#">Hindi</a>
+                <a href="#">Indonesia</a>
+                <a href="#">Italiano</a>
+                <a href="#">Malti</a>
+                <a href="#">Nepali</a>
+                <a href="#">Polski</a>
+                <a href="#">Portugues(Brasil)</a>
+                <a href="#">Portugues(Portugal)</a>
+                <a href="#">Suomi</a>
+                <a href="#">Svenska</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-5xl mt-40 pl-20">Book On Sale</p>
+                    <p class="text-black font-bold pl-20 pt-10 text-900">Buy And Sell Used Books In India. Search And
+                        Buy
+                        Second Hand
+                        Books near You.</p>
+                    <a href="" class="btn btn-danger ml-20 mt-5">Sell Used Books</a>
+                </div>
+
+                <form method="POST" action="/PageTurn/register/">
+                    {% csrf_token %}
+                    
+                    <div id="border" class="mt-40">
+                        <div class="right flex flex-col bg-white p-8 rounded-sm mb-3"
+                            style="box-shadow:2px 2px 2px 2px #aaaaaa9f">
+
+                            
+                            
+                            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="text"
+                                placeholder="Full Name" name="userfullname">                            
+                            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="mobile number"
+                                placeholder="Mobile no." name="usermobile">
+                            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="email"
+                                placeholder="E-Mail" name="useremail">
+                            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="Username"
+                            placeholder="Username" name="username">
+                            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="password"
+                                placeholder="Password" name="userpasswd">
+                            <!-- <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="password"
+                                placeholder="Password" name='useraccpasswd'> -->
+                            <button type="SUBMIT" class="btn btn-danger mt-3">Submit</button>
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col red">
+            <i class="fa fa-flask" aria-hidden="true"></i>
+            <p class="text-white font-bold text-center pt-1">School Books</p>
+            <p class="text-white mt-2 text-center">2437 ads</p>
+            <p class="text-white mt-10 text-center">Arts,Commerce,Others,Science</p>
+            <a href="" class="btn btn-outline-light ml-20 mt-10">VIEW ALL</a>
+        </div>
+        <div class="col blue">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            <p class="text-white font-bold text-center pt-1">Engineering Books</p>
+            <p class="text-white mt-2 text-center">987 ads</p>
+            <a href="" class="btn btn-outline-light ml-20 mt-10">VIEW ALL</a>
+        </div>
+        <div class="col green">
+            <i class="fa fa-black-tie" aria-hidden="true"></i>
+            <p class="text-white font-bold text-center pt-1">Competitive Exams</p>
+            <p class="text-white mt-2 text-center">2573 ads</p>
+            <p class="text-white mt-10 text-center">CAT|GATE|GRE,IBPS PO,Management</p>
+            <a href="" class="btn btn-outline-light ml-20 mt-10">VIEW ALL</a>
+        </div>
+        <div class="col dark">
+            <i class="fa fa-hourglass-half" aria-hidden="true"></i>
+            <p class="text-white font-bold text-center pt-1">Stories</p>
+            <p class="text-white mt-2 text-center">1531 ads</p>
+            <p class="text-white mt-10 text-center">Comics,Fiction,Non-Fiction,<br>Others</p>
+            <a href="" class="btn btn-outline-light ml-20 mt-10">VIEW ALL</a>
+        </div>
+        <div class="col medical">
+            <i class="fa fa-stethoscope" aria-hidden="true"></i>
+            <p class="text-white font-bold text-center pt-1">Medical</p>
+            <p class="text-white mt-2 text-center">504 ads</p>
+            <p class="text-white mt-10 text-center">Homeopathy,MBBS,Medicine,<br>Nursing</p>
+            <a href="" class="btn btn-outline-light ml-20 mt-10">VIEW ALL</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" style="background: lightgray;">
+            <p class="mt-24 text-center text-3xl font-bold underlined">Featured Used Books</p>
+        </div>
+    </div>
+    <div class="row pt-4" style="background: lightgray;">
+
+        <!-- Used Books -->
+        {% for book in ubook %}
+        <div class="col box">
+            
+            <img src="{{book.image.url}}" class="h-40 w-60 ml-10 mt-10" alt="">
+            <p class="text-gray-500 text-sm ml-20 mt-1">{{book.category}}</p>
+            <p class="text-red-700 text-sm ml-28">Upto ₹{{book.price}}</p>
+        </div>
+        {% endfor %}
+        {% comment %} <div class="col box">
+            <img src={% static "images/gate.png" class="h-40 w-60 ml-10 mt-10" alt="">
+            <p class="text-gray-500 text-sm ml-32 mt-1">Gateforum Books</p>
+            <p class="text-red-700 text-sm ml-36">Upto ₹500</p>
+        </div>
+        <div class="col box">
+            <img src={% static "images/physics.jpg" class="h-40 w-60 ml-10 mt-10" alt="">
+            <p class="text-gray-500 text-sm ml-24 mt-1">Competitive Exams</p>
+            <p class="text-red-700 text-sm ml-28">Upto ₹200</p>
+        </div>
+        <div class="col box">
+            <img src={% static "images/book2.jpg" class="h-40 w-60 ml-10 mt-10" alt="">
+            <p class="text-gray-500 text-sm ml-28 mt-1">School Books</p>
+            <p class="text-red-700 text-sm ml-32">Upto ₹100</p>
+        </div> {% endcomment %}
+    </div>
+    <div class="row pt-10" style="background: lightgray;">
+        <div class="col novel">
+            <p class="text-center text-2xl font-bold">Buy Second Hand Novels</p>
+        </div>
+    </div>
+    <div class="row" style="background: lightgray;">
+        <div class="col">
+            <img src={% static "images/novel.png"%} class="h-48 w-60">
+            <p class="text-sm text-red-700 ml-24">₹100</p>
+        </div>
+        <div class="col">
+            <img src={% static "images/ice-fire.jpg"%} class="h-44 w-56 pt-3">
+            <p class="text-sm text-red-700 ml-24 pt-0">₹1000</p>
+        </div>
+        <div class="col">
+            <img src={% static "images/Series.png"%} class="h-44 w-56 mt-2">
+            <p class="text-sm text-red-700 ml-24 pt-0">₹150</p>
+        </div>
+        <div class="col">
+            <img src={% static "images/cartoon.png"%} class="h-44 w-56 mt-2">
+            <p class="text-sm text-red-700 ml-32 pt-0">₹50</p>
+        </div>
+        <div class="col">
+            <img src={% static "images/novel1.jpg"%} class="h-44 w-56 mt-2">
+            <p class="text-sm text-red-700 ml-32 pt-0">₹150</p>
+        </div>
+    </div>
+    <div class="row" style="background: lightgray;">
+        <div class="col ml-10">
+            <img src={% static "images/before.jpg"%} class="h-44 w-56 mt-6">
+            <p class="text-sm text-red-700 ml-20 pt-0">₹100</p>
+        </div>
+        <div class="col ml-10">
+            <img src={% static "images/it.jpg"%} class="h-48 w-40 mt-6">
+            <p class="text-sm text-red-700 ml-20 pt-0">₹150</p>
+        </div>
+        <div class="col">
+            <img src={% static "images/malgudi.jpg"%} class="h-48 w-56 mt-6">
+            <p class="text-sm text-red-700 ml-32 pt-0">₹50</p>
+        </div>
+        <div class="col">
+            <img src={% static "images/Mistake.jpg"%} class="h-48 w-56 mt-6">
+            <p class="text-sm text-red-700 ml-28 pt-0">₹200</p>
+        </div>
+    </div>
+    <div class="row pt-28" style="background: lightgray;">
+        <div class="col sell">
+            <p class="text-center text-2xl font-bold">How to Sell Used Books?</p>
+        </div>
+    </div>
+    <div class="row" style="background: lightgray;">
+        <div class="col">
+            <img src={% static "images/android.png"%} class="h-48 w-56 ml-20 mt-4">
+            <p class="font-sans md:font-serif font-bold pl-28 pt-16 pb-20">Simply Register</p>
+        </div>
+        <div class="col">
+            <img src={% static "images/arrow.png"%} class="h-68 w-64 ml-10">
+        </div>
+        <div class="col">
+            <img src={% static "images/apple.png"%} class="h-68 w-64">
+            <p class="font-sans md:font-serif font-bold pl-20 pt-2 pb-auto">Post Pictures</p>
+        </div>
+        <div class="col">
+            <img src={% static "images/arrow.png"%} class="h-68 w-64">
+        </div>
+        <div class="col">
+            <img src={% static "images/thinking.jpg"%} class="h-56 w-52">
+            <p class="font-sans md:font-serif font-bold pt-10">Need Help?</p>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col">
+            <img src={% static "images/page.png"%} class="h-72 w-68">
+        </div>
+        <div class="col">
+            <p class="pt-20 font-bold underline">Sell and Buy Old Books Online</p><br>
+            <p>Page Turn is customer to customer platform like Olx for books.<br> Sell and buy old books in India at
+                zero commission.</p>
+        </div>
+        <div class="col">
+            <p class="pt-20 font-bold underline">Quick Links</p><br>
+            <a href="">About us</a><br>
+            <a href="">Terms and Conditions</a><br>
+            <a href="">Privacy Policy</a><br>
+            <a href="">Safety Tips</a>
+        </div>
+        <div class="col">
+            <p class="pt-20 font-bold underline">Follow Us</p><br>
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook-square pl-4"> Facebook</i><br></a>
+            <a href="https://www.instagram.com/accounts/login/?hl=en"><i class="fa fa-instagram pl-4">
+                    Instagram</i></a><br>
+            <a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter-square pl-4"> Twitter</i></a>
+        </div>
+    </div>
+
+</html>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+{% comment %} <script src="{% static 'script.js'%}"></script> {% endcomment %}
+</body>
+
+</html>
