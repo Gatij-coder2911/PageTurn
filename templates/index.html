@@ -1,5 +1,4 @@
 {% load static %}
-{% comment %} {% static ""images" as ImgUrl %} {% endcomment %}
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/index-style.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     {% comment %} <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> {% endcomment %}
@@ -24,18 +23,10 @@
             <li class="font-bold"><a href="">Mostly Bought</a></li>
             <li class="font-bold"><a href="">Benefits</a></li>
             <li class="font-bold"><a href="">Helpline No.</a></li>
-            <li class="font-bold pl-16"><a href="">Login</a></li>
+            <li class="font-bold pl-16"><a href="/PageTurn/login/">Login</a></li>
             <li class="font-bold"><a href="">Register</a></li>
             <a href="" class="btn btn-danger">+Sell Books</a>
         </ul>
-
-        {% comment %} {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %} {% endcomment %}
 
         {% if messages %}
         {% for message in messages %}
@@ -89,20 +80,18 @@
                     
                     <div id="border" class="mt-40">
                         <div class="right flex flex-col bg-white p-8 rounded-sm mb-3"
-                            style="box-shadow:2px 2px 2px 2px #aaaaaa9f">
-
-                            
+                            style="box-shadow:2px 2px 2px 2px #aaaaaa9f">                            
                             
                             <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="text"
-                                placeholder="Full Name" name="userfullname">                            
+                                placeholder="Full Name" name="userfullname" required>                            
                             <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="mobile number"
-                                placeholder="Mobile no." name="usermobile">
+                                placeholder="Mobile no." name="usermobile" required>
                             <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="email"
-                                placeholder="E-Mail" name="useremail">
+                                placeholder="E-Mail" name="useremail" required>
                             <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="Username"
-                            placeholder="Username" name="username">
+                            placeholder="Username" name="username" required>
                             <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="password"
-                                placeholder="Password" name="userpasswd">
+                                placeholder="Password" name="userpasswd" required>
                             <!-- <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="password"
                                 placeholder="Password" name='useraccpasswd'> -->
                             <button type="SUBMIT" class="btn btn-danger mt-3">Submit</button>
@@ -165,21 +154,7 @@
             <p class="text-red-700 text-sm ml-28">Upto ₹{{book.price}}</p>
         </div>
         {% endfor %}
-        {% comment %} <div class="col box">
-            <img src={% static "images/gate.png" class="h-40 w-60 ml-10 mt-10" alt="">
-            <p class="text-gray-500 text-sm ml-32 mt-1">Gateforum Books</p>
-            <p class="text-red-700 text-sm ml-36">Upto ₹500</p>
-        </div>
-        <div class="col box">
-            <img src={% static "images/physics.jpg" class="h-40 w-60 ml-10 mt-10" alt="">
-            <p class="text-gray-500 text-sm ml-24 mt-1">Competitive Exams</p>
-            <p class="text-red-700 text-sm ml-28">Upto ₹200</p>
-        </div>
-        <div class="col box">
-            <img src={% static "images/book2.jpg" class="h-40 w-60 ml-10 mt-10" alt="">
-            <p class="text-gray-500 text-sm ml-28 mt-1">School Books</p>
-            <p class="text-red-700 text-sm ml-32">Upto ₹100</p>
-        </div> {% endcomment %}
+
     </div>
     <div class="row pt-10" style="background: lightgray;">
         <div class="col novel">

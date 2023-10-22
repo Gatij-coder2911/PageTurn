@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from BookApp.models import UsedBooks, RegisteredUsers
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
@@ -19,18 +21,42 @@ def register(request):
         username=request.POST['username']
         userpasswd=request.POST['userpasswd']
 
-        if (RegisteredUsers.objects.filter(email=useremail).exists()) or (RegisteredUsers.objects.filter(username=username).exists()) or (RegisteredUsers.objects.filter(mobile_no=usermobile).exists()):
+        if (RegisteredUsers.objects.filter(email=useremail).exists()) or (RegisteredUsers.objects.filter(mobile_no=usermobile).exists()):
             messages.warning(request, "User Already Exists!")
 
             return redirect("/PageTurn")
+        
+        elif (RegisteredUsers.objects.filter(username=username).exists()):
+            messages.warning(request, "User with same Username already Exists!")
+
+            return redirect("/PageTurn")
+
         else:
             user_data=RegisteredUsers(full_name=userfullname, mobile_no=usermobile, email=useremail, username=username, password=userpasswd)
             user_data.save()
             messages.success(request, "User Registered Successfully!!")
 
-            return render(request,"index.html")
-        
+            # subject = 'Welcome to PageTurn'
+            # message = 'Hi {}, thank you for registering in PageTurn'.format(username)
+            # email_from = settings.EMAIL_HOST_USER
+            # recipient_list = [useremail, ]
+            # send_mail( subject, message, email_from, recipient_list )
 
-        
+            return redirect("/PageTurn")
+
+def login(request):
+
+    if request.method=="POST":
+        username=request.POST['username']
+        userpasswd=request.POST['userpasswd']
+
+        if (RegisteredUsers.objects.filter(username=username,password=userpasswd)):
+            messages.success(request, "Login Successful!")
+
+            return render(request, "login.html")
+        else:
+            messages.warning(request, "User not Found!")
+
+            return render(request, "login.html")
     else:
-        return render(request, "register.html")
+        return render(request, "login.html")

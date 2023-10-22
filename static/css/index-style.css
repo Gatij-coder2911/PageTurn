@@ -1,6 +1,6 @@
 .background {
   background-image: linear-gradient(to bottom right, white, lightcoral);
-  background-image: url('../images/book.jpg');
+  background-image: url('../images/index-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
