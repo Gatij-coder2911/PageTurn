@@ -11,4 +11,4 @@ SIH Book Project
 - In terminal you will get the Url where the server is running
   - For example `127.0.0.1:8000`
   - To see the page add `/PageTurn` at the and of the Url.
-  - Example - `127.0.0.1/PageTurn`
+  - Example - `127.0.0.1:8000/PageTurn`
