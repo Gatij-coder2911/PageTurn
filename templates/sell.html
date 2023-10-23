@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sell Books{% endblock title %}
+
+{% block content %}
+    <div id="border">
+        <div class="right flex flex-col bg-white p-8 rounded-sm" style="box-shadow:2px 2px 2px 2px #aaaaaa9f">
+            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="text" placeholder="Name">
+            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="Username"
+                placeholder="Username">
+            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="password"
+                placeholder="Password">
+            <input class="px-4 h-12 my-2 border border-1 border-gray-200 rounded-lg" type="Mobile number"
+                placeholder="Mobile Number">
+        </div>
+    </div>
+    <p class="text-xl text-center pt-5 underline font-bold">Upload images first 5 Pages of Book Here</p>
+    <div class="form-group">
+        <input type="file" class="form-control-file">
+    </div>
+    <div class="form-group">
+        <input type="file" class="form-control-file">
+    </div>
+    <div class="form-group">
+        <input type="file" class="form-control-file">
+    </div>
+    <div class="form-group">
+        <input type="file" class="form-control-file">
+    </div>
+    <div class="form-group">
+        <input type="file" class="form-control-file">
+    </div>
+    <a href="" class="btn btn-danger mt-3 ml-96 pl-24 pr-24">Submit</a>
+{% endblock content%}

@@ -60,3 +60,27 @@ def login(request):
             return render(request, "login.html")
     else:
         return render(request, "login.html")
+
+def whyuse(request):
+    return render(request, "whyuse.html")
+
+def mostlybought(request):
+    return render(request, "mostlybought.html")
+
+def aboutus(request):
+    return render(request, "aboutus.html")
+
+def termsconditions(request):
+    return render(request, "terms.html")
+
+def privacypolicy(request):
+    return render(request, "privacy.html")
+
+def safetytips(request):
+    return render(request, "safety.html")
+
+def helpline(request):
+    return render(request, "helpline.html")
+
+def sellbooks(request):
+    return render(request, "sell.html")

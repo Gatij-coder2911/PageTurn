@@ -1,32 +1,9 @@
+{% extends "base.html" %}
 {% load static %}
-<!doctype html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/index-style.css'%}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    {% comment %} <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> {% endcomment %}
-    <title>Page Turn</title>
-</head>
+{% block title %}Home{% endblock title %}
 
-<body>
-    <div class="background">
-        <h1 class="text-red-700 text-2xl font-bold text-center">Unlocking Affordable Literature</h1>
-        <ul class="flex space-x-11 justify-end mr-64 mt-7">
-            <li class="font-bold"><a href="">Home</a></li>
-            <li class="font-bold"><a href="">Why Use</a></li>
-            <li class="font-bold"><a href="">Mostly Bought</a></li>
-            <li class="font-bold"><a href="">Benefits</a></li>
-            <li class="font-bold"><a href="">Helpline No.</a></li>
-            <li class="font-bold pl-16"><a href="/PageTurn/login/">Login</a></li>
-            <li class="font-bold"><a href="">Register</a></li>
-            <a href="" class="btn btn-danger">+Sell Books</a>
-        </ul>
+{% block content %}
 
         {% if messages %}
         {% for message in messages %}
@@ -72,10 +49,10 @@
                         Buy
                         Second Hand
                         Books near You.</p>
-                    <a href="" class="btn btn-danger ml-20 mt-5">Sell Used Books</a>
+                    <a href="/PageTurn/SellBooks/" class="btn btn-danger ml-20 mt-5">Sell Used Books</a>
                 </div>
 
-                <form method="POST" action="/PageTurn/register/">
+                <form method="POST" action="/PageTurn/Register/">
                     {% csrf_token %}
                     
                     <div id="border" class="mt-40">
@@ -226,38 +203,5 @@
             <p class="font-sans md:font-serif font-bold pt-10">Need Help?</p>
         </div>
     </div>
-    <div class="row footer">
-        <div class="col">
-            <img src={% static "images/page.png"%} class="h-72 w-68">
-        </div>
-        <div class="col">
-            <p class="pt-20 font-bold underline">Sell and Buy Old Books Online</p><br>
-            <p>Page Turn is customer to customer platform like Olx for books.<br> Sell and buy old books in India at
-                zero commission.</p>
-        </div>
-        <div class="col">
-            <p class="pt-20 font-bold underline">Quick Links</p><br>
-            <a href="">About us</a><br>
-            <a href="">Terms and Conditions</a><br>
-            <a href="">Privacy Policy</a><br>
-            <a href="">Safety Tips</a>
-        </div>
-        <div class="col">
-            <p class="pt-20 font-bold underline">Follow Us</p><br>
-            <a href="https://www.facebook.com/"><i class="fa fa-facebook-square pl-4"> Facebook</i><br></a>
-            <a href="https://www.instagram.com/accounts/login/?hl=en"><i class="fa fa-instagram pl-4">
-                    Instagram</i></a><br>
-            <a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter-square pl-4"> Twitter</i></a>
-        </div>
-    </div>
 
-</html>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-{% comment %} <script src="{% static 'script.js'%}"></script> {% endcomment %}
-</body>
-
-</html>
+{% endblock content %}

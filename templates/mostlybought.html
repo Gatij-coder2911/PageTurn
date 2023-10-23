@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Mostly Bought{% endblock title %}
+
+
+{% block content %}
+
+    <p class="text-4xl text-center pt-4 underline">Best Sellers</p>
+    <div class="row mt-4">
+        <div class="col">
+            <img src={% static "images/ikigai.png"%} class="h-52 w-48 ml-20">
+        </div>
+        <div class="col">
+            <img src={% static "images/competitive.png"%} class="h-52 w-80 ml-20">
+        </div>
+        <div class="col">
+            <img src={% static "images/Atomic.jpg"%} class="h-52 w-60 ml-20">
+        </div>
+        <div class="col">
+            <img src={% static "images/Sudha.png"%} class="h-52 w-60 ml-20">
+        </div>
+    </div>
+    <div class="row mt-10">
+        <div class="col">
+            <img src={% static "images/Bhagwat.png"%} class="h-68 w-96 ml-20">
+        </div>
+        <div class="col">
+            <img src={% static "images/rich dad.png"%} class="h-68 w-96 ml-20">
+        </div>
+        <div class="col">
+            <img src={% static "images/med easy.png"%} class="h-68 w-96 ml-20">
+        </div>
+    </div>
+    <div class="row mt-8">
+        <div class="col">
+            <img src={% static "images/Ruskin.png"%} class="h-68 w-96 ml-20">
+        </div>
+        <div class="col">
+            <img src={% static "images/power.jpg"%} class="h-68 w-96 ml-20">
+        </div>
+        <div class="col">
+            <img src={% static "images/hindu.png"%} class="h-68 w-96 ml-20">
+        </div>
+        <div class="col">
+            <img src={% static "images/Mind.png"%} class="h-68 w-96 ml-20">
+        </div>
+    </div>
+
+{% endblock content %}
+
