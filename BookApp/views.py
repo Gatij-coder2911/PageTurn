@@ -22,7 +22,7 @@ def register(request):
         userpasswd=request.POST['userpasswd']
 
         if (RegisteredUsers.objects.filter(email=useremail).exists()) or (RegisteredUsers.objects.filter(mobile_no=usermobile).exists()):
-            messages.warning(request, "User Already Exists!")
+            messages.error(request, "User Already Exists!")
 
             return redirect("/PageTurn")
         
@@ -33,16 +33,23 @@ def register(request):
 
         else:
             user_data=RegisteredUsers(full_name=userfullname, mobile_no=usermobile, email=useremail, username=username, password=userpasswd)
-            user_data.save()
-            messages.success(request, "User Registered Successfully!!")
+            
+            # Handling Exception if the Email is not Sent
+            try:
+                subject = 'Welcome to PageTurn'
+                message = 'Hi {}, Thank you for registering with PageTurn'.format(username)
+                email_from = settings.EMAIL_HOST_USE
+                recipient_list = [useremail, ]
+                send_mail( subject, message, email_from, recipient_list )
 
-            # subject = 'Welcome to PageTurn'
-            # message = 'Hi {}, thank you for registering in PageTurn'.format(username)
-            # email_from = settings.EMAIL_HOST_USER
-            # recipient_list = [useremail, ]
-            # send_mail( subject, message, email_from, recipient_list )
+            except Exception as error:
+                messages.error(request, "Email Not Sent!")
+                print(error)
 
-            return redirect("/PageTurn")
+            finally:
+                user_data.save()
+                messages.success(request, "User Registered Successfully!!")
+                return redirect("/PageTurn")
 
 def login(request):
 
