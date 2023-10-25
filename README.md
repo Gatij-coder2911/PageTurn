@@ -2,8 +2,9 @@
 SIH Book Project
 ## To Run the site
 ### Prerequisites
-- Ensure you have Python installed on your system.
-- run `pip install django` and `pip install Pillow` on terminal.
+- Uninstall Python from your system if it is already installed.
+- Open the Folder in VS Code and go to **dependency** folder.
+- Run **installer.bat** to install python and all required modules.
 ### Steps 
 - Open Folder in VS Code.
 - Create New Terminal

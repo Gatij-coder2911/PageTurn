@@ -38,7 +38,7 @@ def register(request):
             try:
                 subject = 'Welcome to PageTurn'
                 message = 'Hi {}, Thank you for registering with PageTurn'.format(username)
-                email_from = settings.EMAIL_HOST_USE
+                email_from = settings.EMAIL_HOST_USER
                 recipient_list = [useremail, ]
                 send_mail( subject, message, email_from, recipient_list )
 
