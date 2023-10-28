@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Search{% endblock title %}
+
+{% block content %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+
+        {% for image_var,title_var,author_var,votes_var,rating_var in combined_list %}
+            
+            <div class="col-md-2" style="margin-top:50px;">
+                <div class="card h-100" style="width: 15rem;">
+                    <div class="card-body" >
+                                            
+                        <img class="card-img-top h-80" src={{ image_var }}>
+                        <h2 class="text-black" style="margin-top: 5px">{{ title_var }}</h2>
+                        <h4 class="text-black" style="margin-top: 5px">{{ author_var }}</h4>
+                        <h4 class="text-black" style="margin-top: 5px">Votes - {{ votes_var }}</h4>
+                        <h4 class="text-black" style="margin-top: 5px">Rating - {{ rating_var }}</h4>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<!-- Recommend Books Section -->
+<div class="container">
+    <hr style="height:10px;border-width:0;background-color:cyan">
+    <h1 class="text-red-700 text-2xl font-bold text-center" style="font-size: 50px;">Recommended</h1>
+    <h4 class="text-black-700 text-2xl font-bold text-center">More Books like - "{{ book_selected }}"</h4>
+</div>
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+
+        {% for image_var,title_var,author_var in recommend_list %}
+            
+            <div class="col-md-2" style="margin-top:50px;">
+                <div class="card h-100" style="width: 15rem;">
+                    <div class="card-body" >                        
+                        <img class="card-img-top h-80" src={{ image_var }}>
+                        <h2 class="text-black" style="margin-top: 5px">{{ title_var }}</h2>
+                        <h4 class="text-black" style="margin-top: 5px">{{ author_var }}</h4>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}
