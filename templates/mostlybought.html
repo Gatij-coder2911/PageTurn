@@ -8,7 +8,7 @@
 {% block content %}
 
     <p class="text-4xl text-center pt-4 underline">Best Sellers</p>
-    <div class="row mt-4">
+    {% comment %} <div class="row mt-4">
         <div class="col">
             <img src={% static "images/ikigai.png"%} class="h-52 w-48 ml-20">
         </div>
@@ -46,7 +46,33 @@
         <div class="col">
             <img src={% static "images/Mind.png"%} class="h-68 w-96 ml-20">
         </div>
+    </div> {% endcomment %}
+
+    <div class="container" style="margin-bottom: 50px;">
+        <div class="row">
+            
+            
+            {% for title,author,img_url,votes,rating in combined_list %}
+
+                <div class="col-md-2" style="margin-top:50px;">
+                    <div class="card h-100" style="width: 15rem;">
+                        <div class="card-body" >
+                            
+                            <img class="card-img-top h-80" src="{{ img_url }}">
+                            <h2 class="text-black" style="margin-top: 5px">{{ title }}</h2>
+                            <h4 class="text-black" style="margin-top: 5px">{{ author }}</h4>
+                            <h4 class="text-black" style="margin-top: 5px">Votes - {{ votes }}</h4>
+                            <h4 class="text-black" style="margin-top: 5px">Rating - {{ rating }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
+        </div>
     </div>
+
+    
+    
 
 {% endblock content %}
 
