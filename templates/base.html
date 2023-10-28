@@ -28,6 +28,13 @@
             <a href="/PageTurn/SellBooks/" class="btn btn-danger">+Sell Books</a>
         </ul>
 
+        <form action="/PageTurn/Search/" method="POST">
+        {% csrf_token %}
+            <div class="input-group mb-3" style="margin-left: auto; margin-right: auto; width: 50%;">
+                <input name="booksearch" type="text" class="form-control" placeholder="Search Book" aria-label="Recipient's username" aria-describedby="button-addon2" style="max-width: 50%; margin-left:auto;" value="{{ usersearch }}">
+                <button type="submit" class="btn btn-danger" type="button" id="button-addon2" style="margin-right: auto;">Search</button>
+            </div>
+        </form>
         {% block content %}
         
         {% endblock content %}
