@@ -13,5 +13,6 @@ urlpatterns = [
     path('PageTurn/SafetyTips/', views.safetytips, name='safetytips'),
     path('PageTurn/Helpline/', views.helpline, name='helpline'),
     path('PageTurn/SellBooks/', views.sellbooks, name='sellbooks'),
-    path('PageTurn/Search/', views.search, name='searchbooks')
+    path('PageTurn/Search/', views.search, name='searchbooks'),
+    path('PageTurn/Recommend/', views.recommend, name='searchbooks')
 ]

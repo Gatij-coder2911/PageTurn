@@ -58,23 +58,27 @@ def booksearch(usersearch: str):
             combined_results.extend(booksearch(random_tag)[0])
         return [combined_results, "notfound"]
 
-def recommend(book_name:str):
+def bookrecommend(book_name:str):
     index=numpy.where(pivot_table.index==book_name)[0][0]
     similarity_list=sorted(list(enumerate(similarity_score[index])),key=lambda x:x[1], reverse=True)[1:13]
     
     similar_book_img=[]
     similar_book_title=[]
-    similar_book_author=[]   
+    similar_book_author=[]
+    similar_book_votes=[]
+    similar_book_rating=[]
     
 
     for index in similarity_list:        
         title=pivot_table.index[index[0]]
         # print(title)
-        similar_book_img.append(books.loc[books['Book-Title']==title]['Image-URL-M'].drop_duplicates().values[0])
-        similar_book_title.append(books.loc[books['Book-Title']==title]['Book-Title'].drop_duplicates().values[0])
-        similar_book_author.append(books.loc[books['Book-Title']==title]['Book-Author'].drop_duplicates().values[0])
+        similar_book_img.append(books.loc[books['Book-Title']==title]['Image-URL-L'].drop_duplicates().values[0])
+        similar_book_title.append(final_ratings.loc[final_ratings['Book-Title']==title]['Book-Title'].drop_duplicates().values[0])
+        similar_book_author.append(final_ratings.loc[final_ratings['Book-Title']==title]['Book-Author'].drop_duplicates().values[0])
+        similar_book_votes.append(final_ratings.loc[final_ratings['Book-Title']==title]['Num_Ratings'].drop_duplicates().values[0])
+        similar_book_rating.append(final_ratings.loc[final_ratings['Book-Title']==title]['Avg_Rating'].drop_duplicates().values[0])
         
-    combined_list=list(zip(similar_book_img,similar_book_title,similar_book_author))
+    combined_list=list(zip(similar_book_img,similar_book_title,similar_book_author,similar_book_votes,similar_book_rating))
     return combined_list
 
     # result=recommend("Harry Potter and the Chamber of Secrets (Book 2)")
@@ -184,20 +188,41 @@ def sellbooks(request):
 
 def search(request):
     if request.method=="POST":
-        usersearch=request.POST['booksearch']
+        usersearch=request.POST['usersearch']
         search_result=booksearch(str(usersearch))
-        recommend_search=search_result[0][0][1]
-        recommend_result=recommend(str(recommend_search))
-        # print(recommend_result)
         
         if search_result[-1]=="notfound":
             messages.error(request, "Book Not Found!")
-        # print(list(result[0]))
+        
         context={"usersearch":usersearch,
                 "combined_list":search_result[0],
-                "recommend_list":recommend_result,
-                "book_selected":recommend_search                 
+                # "recommend_list":recommend_result,
+                # "book_selected":recommend_search                 
                  }
-        
-        
+
+    
     return render(request, "booksearch.html", context)
+
+def recommend(request):
+    if request.method=="POST":
+        selected_img=request.POST['selected_img']
+        selected_title=request.POST['selected_title']
+        selected_author=request.POST['selected_author']
+        selected_votes=request.POST['selected_votes']
+        selected_rating=request.POST['selected_rating']
+        # is_private = request.POST.get('is_private', False)
+        # print(request.GET)
+        
+        recommend_result=bookrecommend(selected_title)
+
+        
+        context={
+            "usersearch":selected_title,
+            "selected_img":selected_img,
+            "selected_title":selected_title,
+            "selected_author":selected_author,
+            "selected_votes":selected_votes,
+            "selected_rating":selected_rating,
+            "recommend_list":recommend_result}
+
+    return render(request, "recommend.html", context)
