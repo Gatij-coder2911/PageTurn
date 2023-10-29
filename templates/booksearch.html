@@ -15,51 +15,56 @@
     {% endfor %}
     {% endif %}
 <div class="container" style="margin-bottom: 50px;">
-    <div class="row">
-
+    <div class="row-cols" style="margin-left: auto; margin-right: auto; width:50%;">
+        
+            {% comment %} <button class="btn btn-light mx-auto w-100 h-100" style="margin-top: 10px; margin-bottom: 10px;">
+                <img src="your-image.jpg" alt="Image" class="mr-2" width="30">
+                Text on the Right
+            </button> {% endcomment %}
+        
+        
         {% for image_var,title_var,author_var,votes_var,rating_var in combined_list %}
-            
-            <div class="col-md-2" style="margin-top:50px;">
-                <div class="card h-100" style="width: 15rem;">
-                    <div class="card-body" >
-                                            
-                        <img class="card-img-top h-80" src={{ image_var }}>
-                        <h2 class="text-black" style="margin-top: 5px">{{ title_var }}</h2>
-                        <h4 class="text-black" style="margin-top: 5px">{{ author_var }}</h4>
-                        <h4 class="text-black" style="margin-top: 5px">Votes - {{ votes_var }}</h4>
-                        <h4 class="text-black" style="margin-top: 5px">Rating - {{ rating_var }}</h4>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+            <form action="/PageTurn/Recommend/" method="POST">
+            {% csrf_token %}
+                <button class="btn btn-light mx-100 w-100" style="margin-top: 10px; margin-bottom: 10px; height:100%; background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);"
+                                type="submit">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src={{ image_var }} alt="Image" class="img-fluid">
+                            <input type="hidden" name="selected_img" value="{{ image_var }}">
+                        </div>
+                        <div class="col-8">
+                            <div style="height: 100%;">
+                                <div>
+                                    <h2 class="text-black" style="margin-top: 5px">{{ title_var }}</h2>
+                                    <input type="hidden" name="selected_title" value="{{ title_var }}">
+                                </div>
 
+                                <div>
+                                    <h4 class="text-black" style="margin-top: 5px">{{ author_var }}</h4>
+                                    <input type="hidden" name="selected_author" value="{{ author_var }}">
+                                </div>
+
+                                <div>
+                                    <h4 class="text-black" style="margin-top: 5px">Votes - {{ votes_var }}</h4>
+                                    <input type="hidden" name="selected_votes" value="{{ votes_var }}">
+                                </div>
+
+                                <div>
+                                    <h4 class="text-black" style="margin-top: 5px">Rating - {{ rating_var }}</h4>
+                                    <input type="hidden" name="selected_rating" value="{{ rating_var }}">
+                                </div>
+                            </div>
+                        </div>
+                </button>
+                
+            </form>  
+        {% endfor %}
+        
     </div>
 </div>
 
 <!-- Recommend Books Section -->
-<div class="container">
-    <hr style="height:10px;border-width:0;background-color:cyan">
-    <h1 class="text-red-700 text-2xl font-bold text-center" style="font-size: 50px;">Recommended</h1>
-    <h4 class="text-black-700 text-2xl font-bold text-center">More Books like - "{{ book_selected }}"</h4>
-</div>
-<div class="container" style="margin-bottom: 50px;">
-    <div class="row">
-
-        {% for image_var,title_var,author_var in recommend_list %}
-            
-            <div class="col-md-2" style="margin-top:50px;">
-                <div class="card h-100" style="width: 15rem;">
-                    <div class="card-body" >                        
-                        <img class="card-img-top h-80" src={{ image_var }}>
-                        <h2 class="text-black" style="margin-top: 5px">{{ title_var }}</h2>
-                        <h4 class="text-black" style="margin-top: 5px">{{ author_var }}</h4>
-
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-
-    </div>
-</div>
+{% comment %} {% include "recommend.html" %} {% endcomment %}
 
 {% endblock content %}

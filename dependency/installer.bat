@@ -6,10 +6,15 @@ del "./msgbox.vbs"
 echo.
 start /wait ./python-3.10.11-amd64.exe
 echo.
-
+pause
 echo Installing django Module
 echo.
 start /wait pip install django
+echo.
+
+echo Installing pandas Module
+echo.
+start /wait pip install pandas
 echo.
 
 echo Installing Pillow Module
