@@ -2,9 +2,12 @@
 SIH Book Project
 ## To Run the site
 ### Prerequisites
-- Uninstall Python from your system if it is already installed.
-- Open the Folder in VS Code and go to **dependency** folder.
-- Run **installer.bat** to install python and all required modules.
+- Install Python-3.10.11 from dependency folder.
+- Install following modules using cmd:-
+    - django -> `pip install django`
+    - Pillow -> `pip install Pillow`
+    - pandas -> `pip install pandas`
+    - mysqlclient -> `pip install mysqlclient`
 ### Steps 
 - Open Folder in VS Code.
 - Create New Terminal
