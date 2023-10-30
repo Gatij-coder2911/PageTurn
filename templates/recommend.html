@@ -20,13 +20,13 @@
     </div>
   </div>
 <div class="container">
-    {% comment %} <hr style="height:10px;border-width:0;background-color:cyan"> {% endcomment %}
+    
     <h1 class="text-red-700 text-2xl font-bold text-center" style="font-size: 50px;">Recommended</h1><br>
     <h4 class="text-black-700 text-2xl font-bold text-center">More Books like - "{{ selected_title }}"</h4>
 </div>
 <div class="container" style="margin-bottom: 50px;">
     <div class="row">
-
+        <!-- loop that will print the recommended books got from recommend_list -->
         {% for image_var,title_var,author_var,votes,rating in recommend_list %}
             
             <div class="col-md-3" style="margin-top:50px;">

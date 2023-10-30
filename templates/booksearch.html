@@ -17,12 +17,7 @@
 <div class="container" style="margin-bottom: 50px;">
     <div class="row-cols" style="margin-left: auto; margin-right: auto; width:50%;">
         
-            {% comment %} <button class="btn btn-light mx-auto w-100 h-100" style="margin-top: 10px; margin-bottom: 10px;">
-                <img src="your-image.jpg" alt="Image" class="mr-2" width="30">
-                Text on the Right
-            </button> {% endcomment %}
-        
-        
+        <!-- loop that will display books from combined_list -->
         {% for image_var,title_var,author_var,votes_var,rating_var in combined_list %}
             <form action="/PageTurn/Recommend/" method="POST">
             {% csrf_token %}
@@ -64,7 +59,5 @@
     </div>
 </div>
 
-<!-- Recommend Books Section -->
-{% comment %} {% include "recommend.html" %} {% endcomment %}
 
 {% endblock content %}

@@ -6,11 +6,11 @@ from django.core.mail import send_mail
 import pickle, random, numpy
 
 # Required Dataframes
-popular_df=pickle.load(open(r'static\model\popular.pkl','rb'))
-final_ratings=pickle.load(open(r'static\model\final_ratings.pkl','rb'))
-pivot_table=pickle.load(open(r'static\model\pivot_table.pkl','rb'))
-similarity_score=pickle.load(open(r'static\model\similarity_score.pkl','rb'))
-books=pickle.load(open(r'static\model\books.pkl','rb'))
+popular_df=pickle.load(open('static/model/popular.pkl','rb'))
+final_ratings=pickle.load(open('static/model/final_ratings.pkl','rb'))
+pivot_table=pickle.load(open('static/model/pivot_table.pkl','rb'))
+similarity_score=pickle.load(open('static/model/similarity_score.pkl','rb'))
+books=pickle.load(open('static/model/books.pkl','rb'))
 
 # Required Functions
 
@@ -50,7 +50,7 @@ def booksearch(usersearch: str):
         return [combined_list, "found"]
 
     else:
-        print("No such Book found!")
+        
         combined_results = []  # Initialize a list to collect results
         for i in range(6):
             random_tag = book_name_list[random.randint(0, len(book_name_list) - 1)]
@@ -59,19 +59,20 @@ def booksearch(usersearch: str):
         return [combined_results, "notfound"]
 
 def bookrecommend(book_name:str):
+    # get the index no. from pivot_table using index
     index=numpy.where(pivot_table.index==book_name)[0][0]
+    # get the list of similar indexes
     similarity_list=sorted(list(enumerate(similarity_score[index])),key=lambda x:x[1], reverse=True)[1:13]
     
     similar_book_img=[]
     similar_book_title=[]
     similar_book_author=[]
     similar_book_votes=[]
-    similar_book_rating=[]
-    
+    similar_book_rating=[]    
 
     for index in similarity_list:        
-        title=pivot_table.index[index[0]]
-        # print(title)
+        title=pivot_table.index[index[0]] # get the title from pivot_table using index(similar_list index)
+        
         similar_book_img.append(books.loc[books['Book-Title']==title]['Image-URL-L'].drop_duplicates().values[0])
         similar_book_title.append(final_ratings.loc[final_ratings['Book-Title']==title]['Book-Title'].drop_duplicates().values[0])
         similar_book_author.append(final_ratings.loc[final_ratings['Book-Title']==title]['Book-Author'].drop_duplicates().values[0])
@@ -81,11 +82,6 @@ def bookrecommend(book_name:str):
     combined_list=list(zip(similar_book_img,similar_book_title,similar_book_author,similar_book_votes,similar_book_rating))
     return combined_list
 
-    # result=recommend("Harry Potter and the Chamber of Secrets (Book 2)")
-    # for img, title, author in result:
-    #     print(img)
-    #     print(title)
-    #     print(author)
 
 # Create your views here.
 def index(request):
@@ -194,11 +190,9 @@ def search(request):
         if search_result[-1]=="notfound":
             messages.error(request, "Book Not Found!")
         
-        context={"usersearch":usersearch,
-                "combined_list":search_result[0],
-                # "recommend_list":recommend_result,
-                # "book_selected":recommend_search                 
-                 }
+        context={"usersearch":usersearch,# it is passed to store the value in search bar
+                "combined_list":search_result[0]                 
+                }
 
     
     return render(request, "booksearch.html", context)
@@ -210,14 +204,11 @@ def recommend(request):
         selected_author=request.POST['selected_author']
         selected_votes=request.POST['selected_votes']
         selected_rating=request.POST['selected_rating']
-        # is_private = request.POST.get('is_private', False)
-        # print(request.GET)
         
         recommend_result=bookrecommend(selected_title)
-
         
         context={
-            "usersearch":selected_title,
+            "usersearch":selected_title,# search bar will be updated with new value
             "selected_img":selected_img,
             "selected_title":selected_title,
             "selected_author":selected_author,
