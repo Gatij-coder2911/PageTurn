@@ -1,5 +1,6 @@
-# SIH
-SIH Book Project
+# 2nd hand book selling Project
+The project is mainly build to help people in selling and purchasing books online.
+The project uses Django and also has ML algorithm that sorts the books according to search.
 ## To Run the site
 ### Prerequisites
 - Install Python-3.10.11 from dependency folder.
