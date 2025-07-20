@@ -16,6 +16,12 @@
 ---
 
 ## 🧱 Tech Stack
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" width="80"/>
+  <img width="80" alt="icons8-django-120" src="https://github.com/user-attachments/assets/e2cab2a3-12a0-4020-a0bc-ee324266a3ae" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg" width="80"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" width="80"/>
+</p>
 
 ### Backend
 - **Django** – Web framework for backend logic, user handling, and database operations.
